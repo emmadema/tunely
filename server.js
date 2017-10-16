@@ -4,7 +4,7 @@
 var express = require('express');
 // generate a new express app and call it 'app'
 var app = express();
-
+var mongoose = require('mongoose');
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 

@@ -32,6 +32,22 @@ $(document).ready(function() {
   });
 });
 
+
+//should take an array of songs and return and HTMl string
+function buildSongsHtml(songs){
+  //this adds a dash
+  var songText = " &ndash; ";
+  songs.forEach(function(song){
+    songText = songText + " (" +song.trackNumber + ") " + song.name + " &ndash; ";
+  });
+  var songsHtml =    
+    " <li class='list-group-item'>" +
+    " <h4 class='inline-header'>Songs:</h4>" +
+    " <span>" + songText + "</span>" +
+    " </li>";
+    return songsHtml;
+}
+
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
   console.log('rendering album:', album);
@@ -61,6 +77,9 @@ function renderAlbum(album) {
   "                        <h4 class='inline-header'>Released date:</h4>" +
   "                        <span class='album-releaseDate'>" + album.releaseDate + "</span>" +
   "                      </li>" +
+
+  buildSongsHtml(album.songs) +
+
   "                    </ul>" +
   "                  </div>" +
   "                </div>" +
@@ -77,5 +96,4 @@ function renderAlbum(album) {
 
   // render to the page with jQuery
   $('#albums').append(albumHtml);
-
 }

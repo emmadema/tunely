@@ -62,7 +62,7 @@ var sampleSongs = [];
     album.songs = sampleSongs;
   });
 
-  console.log(albumsList);
+  console.log(album.songs);
 
 db.Album.remove({}, function(err, albums){
 
