@@ -5,48 +5,32 @@
  *
  */
 
-
-/* hard-coded data! */
-var sampleAlbums = [];
-sampleAlbums.push({
-             artistName: 'Ladyhawke',
-             name: 'Ladyhawke',
-             releaseDate: '2008, November 18',
-             genres: [ 'new wave', 'indie rock', 'synth pop' ]
-           });
-sampleAlbums.push({
-             artistName: 'The Knife',
-             name: 'Silent Shout',
-             releaseDate: '2006, February 17',
-             genres: [ 'synth pop', 'electronica', 'experimental' ]
-           });
-sampleAlbums.push({
-             artistName: 'Juno Reactor',
-             name: 'Shango',
-             releaseDate: '2000, October 9',
-             genres: [ 'electronic', 'goa trance', 'tribal house' ]
-           });
-sampleAlbums.push({
-             artistName: 'Philip Wesley',
-             name: 'Dark Night of the Soul',
-             releaseDate: '2008, September 12',
-             genres: [ 'piano' ]
-           });
-/* end of hard-coded data */
-
-
-
-
+//get doc ready for Jquery
 $(document).ready(function() {
+
   console.log('app.js loaded!');
-  sampleAlbums.forEach(function(album) {
-  renderAlbum(album);
+
+  //getting the albums api by feeding in albums
+  //responds to app.get on back end
+  $.get('/api/albums', function(albums){
+    console.log(albums);
+    //run through every alubum and pass in the album data
+    albums.forEach(function(album) {
+    renderAlbum(album);
+    });
+  });
+
+  $('#album-form').submit(function(event){
+    event.preventDefault();
+    var formData = $(this).serialize();
+    console.log(formData);
+    $(this).trigger("reset");
+    $.post('/api/albums', formData, function(album){
+      console.log(formData);
+      renderAlbum(album);
+    });
   });
 });
-
-
-
-
 
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
