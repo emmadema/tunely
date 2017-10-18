@@ -62,7 +62,7 @@ var sampleSongs = [];
 //  }
 
 // populate each albums song list
-albumList.forEach(function(album) {
+albumList.forEach(function(albums) {
   albumList.songs = sampleSongs;
 });
 
