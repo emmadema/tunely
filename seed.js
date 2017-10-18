@@ -53,7 +53,17 @@ var sampleSongs = [];
                      trackNumber: 7
   });
 
-  var newAlbums = [];
+// var newAlbums = albumList.map(function(album) {
+//   album.songs = sampleSongs;
+//   return (album);
+//   //console.log(newAlbums);
+// });
+
+albumList.forEach(function(album){
+  album.songs = sampleSongs;
+});
+console.log(albumList);
+
 
 // populate each albums song list
 //for (i=0; i<albumList.length; i++) {
@@ -62,12 +72,8 @@ var sampleSongs = [];
 //  }
 
 // populate each albums song list
-albumList.forEach(function(albums) {
-  albumList.songs = sampleSongs;
-  newAlbums.map();
-});
 
-console.log(newAlbums);
+
 
 db.Album.remove({}, function(err, albums){
 
