@@ -56,11 +56,15 @@ var sampleSongs = [];
   var newAlbums = [];
 
 // populate each albums song list
-for (i=0; i<albumList.length; i++) {
-    newAlbums.songs = sampleSongs;
-    newAlbums.push(albumList);
-    newAlbums.push(sampleSongs);
-  }
+//for (i=0; i<albumList.length; i++) {
+//    albumList.songs = sampleSongs;
+//    newAlbums.push(albumList);
+//  }
+
+// populate each albums song list
+albumList.forEach(function(album) {
+  albumList.songs = sampleSongs;
+});
 
 console.log(newAlbums);
 

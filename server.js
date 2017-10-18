@@ -58,7 +58,8 @@ app.get('/api/albums', function albumsIndex(req, res) {
 
 //POST api/albums
 app.post('/api/albums', function new_album(req, res){
-  
+  var genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
+  req.body.genres = genres;
   //creates a new array from the restults
   db.Album.create(req.body, function(err, album) {
   console.log(album);
