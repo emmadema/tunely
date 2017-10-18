@@ -64,6 +64,7 @@ var sampleSongs = [];
 // populate each albums song list
 albumList.forEach(function(albums) {
   albumList.songs = sampleSongs;
+  newAlbums.map();
 });
 
 console.log(newAlbums);
