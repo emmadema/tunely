@@ -3,70 +3,65 @@
 
 var db = require("./models");
 
-var albumsList =[
-  // put data here!
-];
-
-albumsList.push({
-              artistName: 'the Old Kanye',
-              name: 'The College Dropout',
-              releaseDate: '2004, February 10',
-              genres: [ 'rap', 'hip hop' ]
+var albumList =[];
+albumList.push({
+              artistName: 'Nine Inch Nails',
+              name: 'The Downward Spiral',
+              releaseDate: '1994, March 8',
+              genres: [ 'industrial', 'industrial metal' ]
             });
-albumsList.push({
-              artistName: 'the New Kanye',
-              name: 'The Life of Pablo',
-              releaseDate: '2016, Febraury 14',
-              genres: [ 'hip hop' ]
+albumList.push({
+              artistName: 'Metallica',
+              name: 'Metallica',
+              releaseDate: '1991, August 12',
+              genres: [ 'heavy metal' ]
             });
-albumsList.push({
-              artistName: 'the always rude Kanye',
-              name: 'My Beautiful Dark Twisted Fantasy',
-              releaseDate: '2010, November 22',
-              genres: [ 'rap', 'hip hop' ]
+albumList.push({
+              artistName: 'The Prodigy',
+              name: 'Music for the Jilted Generation',
+              releaseDate: '1994, July 4',
+              genres: [ 'electronica', 'breakbeat hardcore', 'rave', 'jungle' ]
             });
-albumsList.push({
-              artistName: 'the sweet Kanye',
-              name: '808s & Heartbreak',
-              releaseDate: '2008, November 24',
-              genres: [ 'r&b', 'electropop', 'synthpop' ]
+albumList.push({
+              artistName: 'Johnny Cash',
+              name: 'Unchained',
+              releaseDate: '1996, November 5',
+              genres: [ 'country', 'rock' ]
             });
 
 var sampleSongs = [];
 
-  sampleSongs.push({ name: 'Famous',
-                     trackNumber: 1
-  });
-  sampleSongs.push({ name: "All of the Lights",
-                     trackNumber: 2
-  });
-  sampleSongs.push({ name: 'Guilt Trip',
-                     trackNumber: 3
-  });
-  sampleSongs.push({ name: 'Paranoid',
-                     trackNumber: 4
-  });
-  sampleSongs.push({ name: 'Ultralight Beam',
-                     trackNumber: 5
-  });
-  sampleSongs.push({ name: 'Runaway',
-                     trackNumber: 6
-  });
-  sampleSongs.push({ name: 'Stronger',
-                     trackNumber: 7
-  });
+sampleSongs.push({ name: 'Swamped',
+                   trackNumber: 1
+});
+sampleSongs.push({ name: "Heaven's a Lie",
+                   trackNumber: 2
+});
+sampleSongs.push({ name: 'Daylight Dancer',
+                   trackNumber: 3
+});
+sampleSongs.push({ name: 'Humane',
+                   trackNumber: 4
+});
+sampleSongs.push({ name: 'Self Deception',
+                   trackNumber: 5
+});
+sampleSongs.push({ name: 'Aeon',
+                   trackNumber: 6
+});
+sampleSongs.push({ name: 'Tight Rope',
+                   trackNumber: 7
+});
 
-
-  // populate each albums song list
-  albumsList.forEach(function(album) {
+// populate each albums song list
+var albumsSongs = sampleSongs.map(function(){
     album.songs = sampleSongs;
-  });
-
-  console.log(album.songs);
+});
+console.log(albumsSongs);
 
 db.Album.remove({}, function(err, albums){
 
-  db.Album.create(albumsList, function(err, albums){
+  db.Album.create(albumList, function(err, albums){
     if (err) { return console.log('ERROR', err); }
     console.log("all albums:", albums);
     console.log("created", albums.length, "albums");
